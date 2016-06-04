@@ -1,12 +1,49 @@
 # T100 API V1
 
 ## API calls
+
+Start Recording
 ```
 /api/hsfb/v1/start
+```
+---
+Stop Recording
+
+```
 /api/hsfb/v1/stop
+```
+---
+
+Toggles Recording On/Off
+
+```
 /api/hsfb/v1/toggle
+```
+---
+
+Returns Recording Status
+
+```
 /status
+```
+---
+
+Delete All Clips on T100
+
+```
 /deleteVideos
+```
+
+---
+Returns T100 Software Version
+
+```
+/version
+```
+---
+Returns JSON object containing all clips and meta data
+```
+/allVideos.json
 ```
 
 ---------------------------------------------------------
@@ -27,6 +64,7 @@ using (WebClient wc = new WebClient())
 {
   string url = "http://" + t100ipAddress + ":1612" + apiCall;
   var json = wc.DownloadString(url);
+  //JSON Response from server available in the "json" object
 }
 ```
 
@@ -42,8 +80,9 @@ using (WebClient wc = new WebClient())
   $.ajax({
     url: "http://" + t100ipAddress + ":1612" + apiCall,
     context: document.body
-  }).done(function() {
+  }).done(function(data) {
     //Your Code here
+    //Data returned from the server is available in the "data" object
   });
 
 </script>
