@@ -19,7 +19,7 @@ C# Send Command
 using System.Net;
 
 string t100ipAddress = "192.168.3.1";
-string apiCall = "/api/rightview/baseball/v1/start";
+string apiCall = "/api/hsfb/v1/toggle";
 
 using (WebClient wc = new WebClient())
 {
@@ -64,7 +64,7 @@ Javascript Send Command (jQuery)
 <script>
 
   var t100ipAddress = "192.168.3.1";
-  var apiCall = "/api/rightview/baseball/v1/start";
+  var apiCall = "/api/hsfb/v1/toggle";
 
   $.ajax({
     url: "http://" + t100ipAddress + ":1612" + apiCall,
