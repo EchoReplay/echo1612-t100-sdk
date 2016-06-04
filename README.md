@@ -11,10 +11,7 @@ API calls
 
 ---------------------------------------------------------
 
-
-C# Send Command
-
-*This Code will perform one of the API calls*
+# C# Send Command
 ```c#
 using System.Net;
 
@@ -26,6 +23,25 @@ using (WebClient wc = new WebClient())
   string url = "http://" + t100ipAddress + ":1612" + apiCall;
   var json = wc.DownloadString(url);
 }
+```
+
+# Javascript Send Command
+```html
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script>
+
+  var t100ipAddress = "192.168.3.1";
+  var apiCall = "/api/hsfb/v1/toggle";
+
+  $.ajax({
+    url: "http://" + t100ipAddress + ":1612" + apiCall,
+    context: document.body
+  }).done(function() {
+    //Your Code here
+  });
+
+</script>
 ```
 
 ---------------------------------------------------------
@@ -52,26 +68,4 @@ udp.on('message', function(msg, rinfo) {
   }
 });
 ```
----------------------------------------------------------
 
-
-Javascript Send Command (jQuery)
-
-*This Code will perform one of the API calls*
-```html
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
-<script>
-
-  var t100ipAddress = "192.168.3.1";
-  var apiCall = "/api/hsfb/v1/toggle";
-
-  $.ajax({
-    url: "http://" + t100ipAddress + ":1612" + apiCall,
-    context: document.body
-  }).done(function() {
-    //Your Code here
-  });
-
-</script>
-```
