@@ -1,6 +1,6 @@
-# t100sdk
+# T100 API V1
 
-API calls
+## API calls
 ```
 /api/hsfb/v1/start
 /api/hsfb/v1/stop
@@ -11,10 +11,15 @@ API calls
 
 ---------------------------------------------------------
 
-# C# Send Command
+## C# Send Command
+
+Import
 ```c#
 using System.Net;
+```
 
+Send Function
+```c#
 string t100ipAddress = "192.168.3.1";
 string apiCall = "/api/hsfb/v1/toggle";
 
@@ -25,7 +30,7 @@ using (WebClient wc = new WebClient())
 }
 ```
 
-# Javascript Send Command
+## Javascript Send Command
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
@@ -47,7 +52,7 @@ using (WebClient wc = new WebClient())
 ---------------------------------------------------------
 
 
-Javascript Discover T100 (Node JS)
+## Javascript Discover T100 (Node JS)
 
 *This Code will return the IP Address of any T100 on the same local network*
 ```javascript
