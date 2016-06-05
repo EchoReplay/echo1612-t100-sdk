@@ -89,11 +89,40 @@ using (WebClient wc = new WebClient())
 ```
 
 ---------------------------------------------------------
+## C# Discover T100
 
+*This Code will return the IP Address of any T100s on the same local network*
+
+Import
+```c#
+using System.Net;
+using System.Net.Sockets;
+```
+
+Discovery Code
+```c#
+UdpClient client = new UdpClient();
+client.ExclusiveAddressUse = false;
+IPEndPoint localEp = new IPEndPoint(IPAddress.Any, 1612);
+client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+client.Client.Bind(localEp);
+IPAddress multicastaddress = IPAddress.Parse("224.0.0.1");
+client.JoinMulticastGroup(multicastaddress);
+
+while (true) {
+  Byte[] data = client.Receive(ref localEp);
+  string strData = Encoding.UTF8.GetString(data); //Print strData to see full broadcast
+  int start = strData.IndexOf("server");
+  if(start > 0) {
+    string server = strData.Substring(start).Split('"')[2]; //Check for IP Address In JSON String
+    Console.WriteLine(server);
+  }  
+}
+```
 
 ## Javascript Discover T100 (Node JS)
 
-*This Code will return the IP Address of any T100 on the same local network*
+*This Code will return the IP Address of any T100s on the same local network*
 ```javascript
 var dgram = require('dgram');
 var udp = dgram.createSocket('udp4');
